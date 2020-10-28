@@ -24,9 +24,10 @@ for event in longpoll.listen():
         print('Текст сообщения: ' + str(event.text))
         print(event.user_id)
         response = event.text.lower()
+        stop = "!"
+        stop2 = "1"
+        stop3 = stop + stop2
         if event.from_user and not (event.from_me):
-            if response == "привет":
-                vk_session.method('messages.send', {'user_id': event.user_id, 'message': "Приветик) ", 'random_id': 0})
             if response == "пидр":
                 vk_session.method('messages.send', {'user_id': event.user_id, 'message': "Ты тоже, пидр)", 'random_id': 0})
             if response == "доброе утро":
@@ -39,11 +40,9 @@ for event in longpoll.listen():
                 vk_session.method('messages.send', {'user_id': event.user_id,
                                                     'message': "В пизду ты пойдешь, " + str(first_name) + ")",
                                                     'random_id': 0})
-            if event.user_id == 555468425:
-                vk_session.method('messages.send', {'user_id': event.user_id, 'message': "Дорогая, Лера, меня сейчас нет на месте, и я не могу тебе ответить в данный момент. Я обещаю вернуться, как можно быстрее, и ,как можно скорее, тебе ответить :*", 'random_id': 0})
-            if event.user_id == 391673127:
-                vk_session.method('messages.send', {'user_id': event.user_id, 'message': "Привет, Сонечка, тебя приветствует мой автоответчик. Меня сейчас, в данный момент, нет на месте, и я не могу тебе ответить. Как только я вернусь, я, обязательно, тебе отвечу. Люблю <3 целую :-* обнимаю.", 'random_id': 0})
-            elif event.user_id != 555468425 and event.user_id != 391673127:
-                vk_session.method('messages.send', {'user_id': event.user_id, 'message': str(first_name) + ", в данный момент меня сейчас нет на месте, и не могу ответить на твои сообщения. Пожалуйста, дождись моего возращения, и я обязательно тебе отвечу.", 'random_id': 0})
+            if response == "привет":
+                vk_session.method('messages.send', {'user_id': event.user_id, 'message': "Приветик, " +str(first_name) + ")", 'random_id': 0})
+            if response == "кто ты?":
+                vk_session.method('messages.send', {'user_id': event.user_id, 'message': "Я бот Валера, пока что в моей базе не так много команд, но со временем я буду улучшен", 'random_id': 0})
 
 
